@@ -22,7 +22,7 @@ var SYS     = require("sys");
 var QUERY   = require ("querystring");
 var URL     = require("url");
 var FS      = require("fs");
-var MPART   = require("../lib/multipart/multipart");
+var MPART   = require("../../3rdparty/multipart")
 var UTILS   = require("../rnodeUtils");
 
 exports.name = "/R/...webvis";

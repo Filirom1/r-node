@@ -17,12 +17,13 @@
     along with R-Node Server.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+
 var SYS     = require("sys");
 var QUERY   = require ("querystring");
 var URL     = require("url");
 var FS      = require("fs");
-var MPART   = require("../lib/multipart/multipart");
 var UTILS   = require("../rnodeUtils");
+var MPART   = require("../../3rdparty/multipart")
 
 exports.name = "/R/upload";
 

@@ -469,13 +469,13 @@ function conditionallyGoLive () {
 
 function triggerGoLiveChecks() {
     Authenticator.init (Config.authentication, function (ok) {
-        "Setup authentication: " + (ok ? "ok" : "NOT ok");
+        nodelog(null, "Setup authentication: " + (ok ? "ok" : "NOT ok"));
         requiredSetupSteps["auth"] = ok;
         conditionallyGoLive();
     });
 
     testRConnection (function (ok) {
-        "Tested R connection: " + (ok ? "ok" : "NOT ok");
+        nodelog(null, "Tested R connection: " + (ok ? "ok" : "NOT ok"));
         requiredSetupSteps["testR"] = ok;
         conditionallyGoLive();
     });
