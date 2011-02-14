@@ -17,13 +17,14 @@
     along with R-Node Server.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+console.log("Dirname for r-upload: " + __dirname);
 
 var SYS     = require("sys");
 var QUERY   = require ("querystring");
 var URL     = require("url");
 var FS      = require("fs");
 var UTILS   = require("../rnodeUtils");
-var MPART   = require("../../3rdparty/multipart")
+var MPART   = require("../lib/multipart")
 
 exports.name = "/R/upload";
 

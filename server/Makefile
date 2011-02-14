@@ -12,16 +12,15 @@ CPPFLAGS = -I/usr/local/include/node -Isrc/include -DPIC -fPIC -g -c -DEV_MULTIP
 
 all: binding.node
 	mkdir -p ../deploy
-	mkdir -p ../deploy/handlers
-	cd ../deploy && ln -s ../server/binding.node . && \
+	mkdir -p ../deploy/lib
+	cd ../deploy && cp ../server/binding.node . && \
 	ln -s ../server/etc . && \
-	ln -s ../server/authenticators . && \
-	ln -s ../server/*.js . && \
-	ln -s ../server/run-server.sh . && \
-	cd - && \
-	cd ../deploy/handlers && \
-	ln -s ../../server/handlers/* . && \
-	cd -
+	cp -r ../server/authenticators . && \
+	cp -r ../server/handlers . && \
+	cp -r ../3rdparty/multipart lib && \
+	cp ../server/*.js . && \
+	cp ../server/run-server.sh . && \
+	cd - 
 
 binding.node: src/binding.o src/Rconnection.o
 	gcc -o binding.node src/binding.o src/Rconnection.o $(LDFLAGS)
