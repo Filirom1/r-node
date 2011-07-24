@@ -36,14 +36,14 @@ rnode.display.Display = function () {
 
 rnode.display.Display = RNodeCore.extend (rnode.display.Display, { });
 
-rnode.display.Display.register = function (class, constructor) {
+rnode.display.Display.register = function (c, constructor) {
     rnode.display.Display.availableDisplayFunctions = rnode.display.Display.availableDisplayFunctions || {};
-    rnode.display.Display.availableDisplayFunctions[class] = constructor;
+    rnode.display.Display.availableDisplayFunctions[c] = constructor;
 }
 
 rnode.display.Display.find = function (robject) {
-    return rnode.display.Display.availableDisplayFunctions[robject.class()] ?
-        new rnode.display.Display.availableDisplayFunctions[robject.class()] ()
+    return rnode.display.Display.availableDisplayFunctions[robject.rclass()] ?
+        new rnode.display.Display.availableDisplayFunctions[robject.rclass()] ()
         : null;
 }
 

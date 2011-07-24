@@ -65,14 +65,14 @@ rnode.R.RObject = RNodeCore.extend (rnode.R.RObject, {
     /**
      * Returns the class of the object, if it has one.
      */
-    class: function () {
+    rclass: function () {
         if (this.isArray()) {
             return 'array';
         }
 
         if (this.serverData) {
-            if (this.serverData.attributes && this.serverData.attributes.class) {
-                return this.serverData.attributes.class;
+            if (this.serverData.attributes && this.serverData.attributes['class']) {
+                return this.serverData.attributes['class']
             }
 
             if (this.serverData.data) { // No class, but a data item == a list of data.
@@ -158,7 +158,7 @@ rnode.R.RObject = RNodeCore.extend (rnode.R.RObject, {
     },
 
     plottable: function () {
-        return rnode.graph.Graph.find (this.class()) != null;
+        return rnode.graph.Graph.find (this.rclass()) != null;
     },
 
     getSourceCommand: function () {

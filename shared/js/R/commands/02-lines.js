@@ -39,7 +39,7 @@ rnode.command.Lines = RNodeCore.extend (rnode.command.CommandHandler, {
 
         rApi.extractAllParameters (parsedCommand, 'lines', function (results) {
             var serverData = {
-                attributes: { class: 'lines.default' },
+                attributes: { rclass: 'lines.default' },
                 data: {
                     color: results.get (null, 'col').data
                 }

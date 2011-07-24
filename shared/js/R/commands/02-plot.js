@@ -39,7 +39,7 @@ rnode.command.Plot = RNodeCore.extend (rnode.command.CommandHandler, {
 
         rApi.extractAllParameters (parsedCommand, 'plot', function (results) {
             var serverData = {
-                attributes: { class: 'plot.default' },
+                attributes: { rclass: 'plot.default' },
                 data: {
                     xlab: results.get (-1, 'xlab').data,
                     ylab: results.get (-1, 'ylab').data,

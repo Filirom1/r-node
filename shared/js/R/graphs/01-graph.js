@@ -41,10 +41,10 @@ rnode.graph.Graph = RNodeCore.extend (rnode.graph.Graph,  {
             return;
 
         list.forEach (function (o) {
-            var g = rnode.graph.Graph.find (o.robject.class());
+            var g = rnode.graph.Graph.find (o.robject.rclass());
 
             if (!g)
-                throw new Error ("Cannot find graph for " + o.robject.class());
+                throw new Error ("Cannot find graph for " + o.robject.rclass());
 
             g.plotOver (visInfo, o.robject, o.config);
 
@@ -87,14 +87,14 @@ rnode.graph.Graph = RNodeCore.extend (rnode.graph.Graph,  {
     }
 });
 
-rnode.graph.Graph.register = function (class, constructor) {
+rnode.graph.Graph.register = function (c, constructor) {
     rnode.graph.Graph.availableGraphs = rnode.graph.Graph.availableGraphs || {};
-    rnode.graph.Graph.availableGraphs[class] = constructor;
+    rnode.graph.Graph.availableGraphs[c] = constructor;
 }
 
-rnode.graph.Graph.find = function (class) {
-    return rnode.graph.Graph.availableGraphs[class] ?
-        new rnode.graph.Graph.availableGraphs[class] ()
+rnode.graph.Graph.find = function (c) {
+    return rnode.graph.Graph.availableGraphs[c] ?
+        new rnode.graph.Graph.availableGraphs[c] ()
         : null;
 }
 

@@ -45,7 +45,7 @@ rnode.R.API = RNodeCore.extend ( rnode.Observable, {
         this.parser = new rnode.R.Parser();
         this.state = rnode.R.API.STATE_UNCONNECTED;
         this.serverGraphFormat = 'png';
-        this.graphUsingProtovis = true;
+        this.graphUsingProtovis = !Ext.isIE;
 
         rnode.R.API.superclass.constructor.call (this, config);
     },
@@ -180,6 +180,7 @@ rnode.R.API = RNodeCore.extend ( rnode.Observable, {
     setGraphFormat: function (serverGraphFormat, graphUsingProtovis, callback) {
         this.serverGraphFormat = serverGraphFormat || this.serverGraphFormat;
         this.graphUsingProtovis = graphUsingProtovis != null ? graphUsingProtovis : this.graphUsingProtovis;
+        this.graphUsingProtovis = Ext.isIE ? false : this.graphUsingProtovis
 
         if (serverGraphFormat) {
             RNodeCore.ajax({
@@ -202,7 +203,7 @@ rnode.R.API = RNodeCore.extend ( rnode.Observable, {
      * with the given name.
      */
     graph: function (robject, div, config) {
-        var g = rnode.graph.Graph.find (robject.class());
+        var g = rnode.graph.Graph.find(robject.rclass())
 
         if (!g) {
             if (config.callback)
@@ -219,7 +220,7 @@ rnode.R.API = RNodeCore.extend ( rnode.Observable, {
 
             this.lastGraph.extras.push ({ robject: robject, config: config });
 
-            g = rnode.graph.Graph.find (this.lastGraph.robject.class());
+            g = rnode.graph.Graph.find (this.lastGraph.robject.rclass());
             g.plot (div, this.lastGraph.robject, config, this.lastGraph.extras);
         } else {
             g.plot (div, robject, config, null);

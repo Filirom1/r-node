@@ -74,7 +74,7 @@ rnode.graph.PlotDefault = RNodeCore.extend (rnode.graph.Graph, {
         }
 
         var tipsyConfig = {
-            gravity: 's',
+            gravity: 's'
         }
 
         if (type == 'l' || type == 'o') {
