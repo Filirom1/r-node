@@ -4,10 +4,10 @@ JS_FILES =  \
 	../3rdparty/to-function.js \
 	../3rdparty/functional.js
 
-JS_FILES += $(wildcard js/0-tokens.js)
-JS_FILES += $(wildcard js/1-r-node-core.js)
-JS_FILES += $(wildcard js/2-observable.js)
-JS_FILES += $(wildcard js/3-r-api.js)
+JS_FILES += $(wildcard js/00-tokens.js)
+JS_FILES += $(wildcard js/01-r-node-core.js)
+JS_FILES += $(wildcard js/02-observable.js)
+JS_FILES += $(wildcard js/03-r-api.js)
 js_files += $(wildcard js/R/01-r-object.js)
 js_files += $(wildcard js/R/02-r-parser-internal.js)
 js_files += $(wildcard js/R/03-r-parser.js)
