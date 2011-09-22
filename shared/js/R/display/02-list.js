@@ -36,8 +36,10 @@ rnode.display.List = RNodeCore.extend (rnode.display.Display, {
         var keys = pv.keys (data);
         var ret = "<dl>";
         keys.forEach (function (d) {
+          if(data[d]){
             ret += "<dt>$" + d;
             ret += "<dd><pre style='padding-left: 10px'>" + rnode.display.Array.formatArray(data[d]) + "\n</pre></dd>";
+          }
         });
         ret += '</dl>';
         return {
