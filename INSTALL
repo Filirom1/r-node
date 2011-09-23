@@ -42,10 +42,10 @@ Pre-requisites:
   4. Run RServe : the R Web Server 
 
      First run `R` 
-     if you have a proxy and you want R to contact WebService on the Internet 
+     if you have a proxy and your RServe need to call a web service on Internet 
      run `http_proxy="http://proxy:3128" R` 
 
-     otherwise, if your RServe need to call web service in localhost 
+     otherwise, if your RServe need to call a web service on localhost 
      run `http_proxy="" R` 
 
      if you don't have a proxy run `R`
