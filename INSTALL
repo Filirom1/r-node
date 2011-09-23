@@ -67,7 +67,7 @@ Pre-requisites:
 
     Do the following commands:
 
-         git clone git@github.com:Filirom1/r-node.git r-node
+         git clone https://github.com/Filirom1/r-node.git r-node
          cd r-node
          make
 
