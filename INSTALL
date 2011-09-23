@@ -10,18 +10,18 @@ Pre-requisites:
 
      Ubuntu and apt-get systems, try:
 
-     sudo apt-get install r-base
+         sudo apt-get install r-base
 
 
   2. Install Rserve (http://www.rforge.net/Rserve/doc.html)
 
-     sudo apt-get install r-cran-rserve
+         sudo apt-get install r-cran-rserve
      
      or, others, 
 
      run R, then type:
 
-     install.packages("Rserve")
+         install.packages("Rserve")
 
      quit R by executing the command `q()`
 
@@ -30,7 +30,7 @@ Pre-requisites:
 
     run R, then type: 
 
-    install.packages("rjson")
+        install.packages("rjson")
 
     quit R by executing the command `q()`
 
@@ -53,8 +53,8 @@ Pre-requisites:
 
      Then launch Rserve
 
-     library(Rserve)
-     Rserve()
+         library(Rserve)
+         Rserve()
    
      You should see:
 
@@ -65,9 +65,11 @@ Pre-requisites:
 
   5. Build R-Node:
 
-     git clone git@github.com:Filirom1/r-node.git r-node
-     cd r-node
-     make
+    Do the following commands:
+
+         git clone git@github.com:Filirom1/r-node.git r-node
+         cd r-node
+         make
 
      This should build a 'deploy' directory.
      You'll need gcc installed to build the Node.JS library.
@@ -75,8 +77,10 @@ Pre-requisites:
 
   6. Run R-Node:
 
-     cd deploy
-     ./run-server.sh
+     Do the following commands:
+
+         cd deploy
+         ./run-server.sh
 
      You should see similar to this:
 
@@ -104,10 +108,12 @@ DEBUG: Setup command response: {"data":{"pager":["/usr/lib/R/bin/pager"]},"attri
      Graphs -> Use SVG when available (uncheck)
 
 
-  9. Do the given example, an image will be shown
+  9. First use
+
+     Do the given example, an image will be shown
     
-     x <- rnorm(100); y <- rnorm(100)
-     plot (x,y, type='o')
+         x <- rnorm(100); y <- rnorm(100)
+         plot (x,y, type='o')
 
 
  10. Use JSON Web Service
