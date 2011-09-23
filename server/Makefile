@@ -5,7 +5,7 @@ SRC = src/binding.cc \
 	src/Rconnection.cc
 
 LDFLAGS = -shared -L/usr/lib/R/lib -L/usr/local/lib -lR -lcrypt
-CPPFLAGS = -I/usr/include/nodejs -Isrc/include -DPIC -fPIC -g -c -DEV_MULTIPLICITY=0
+CPPFLAGS = -I/usr/include/node -Isrc/include -DPIC -fPIC -g -c -DEV_MULTIPLICITY=0
 
 %.o : %.c
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
