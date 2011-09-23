@@ -34,6 +34,7 @@ Pre-requisites:
 
   5. Build R-Node:
 
+     git clone git@github.com:Filirom1/r-node.git r-node
      cd r-node
      make
 
