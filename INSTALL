@@ -12,18 +12,46 @@ Pre-requisites:
 
      sudo apt-get install r-base
 
+
   2. Install Rserve (http://www.rforge.net/Rserve/doc.html)
 
      sudo apt-get install r-cran-rserve
      
-     or, others, run R, then type:
+     or, others, 
+
+     run R, then type:
 
      install.packages("Rserve")
+
+     quit R by executing the command `q()`
+
+
+  2. Install rjson
+
+    run R, then type: 
+
+    install.packages("rjson")
+
+    quit R by executing the command `q()`
+
 
   3. Install Node.js. (ensure you 'make install').
      Follow instructions on: http://nodejs.org/
 
-  4. Run RServe. E.g. Run R then type:
+
+  4. Run RServe : the R Web Server 
+
+     First run `R` 
+     if you have a proxy and you want R to contact WebService on the Internet 
+     run `http_proxy="http://proxy:3128" R` 
+
+     otherwise, if your RServe need to call web service in localhost 
+     run `http_proxy="" R` 
+
+     if you don't have a proxy run `R`
+
+
+     Then launch Rserve
 
      library(Rserve)
      Rserve()
@@ -31,6 +59,9 @@ Pre-requisites:
      You should see:
 
      Starting Rserve on port 6311 :
+
+     You can quit R with `q()`
+
 
   5. Build R-Node:
 
@@ -40,6 +71,7 @@ Pre-requisites:
 
      This should build a 'deploy' directory.
      You'll need gcc installed to build the Node.JS library.
+
 
   6. Run R-Node:
 
@@ -66,7 +98,41 @@ DEBUG: Setup command response: {"data":{"pager":["/usr/lib/R/bin/pager"]},"attri
 
      http://localhost:2903/
 
-  8. If using R 2.10 or greater, and if you want help, you need to start up a R help
+
+  8. Disable the SVG Graph because it doesn't work
+
+     Graphs -> Use SVG when available (uncheck)
+
+
+  9. Do the given example, an image will be shown
+    
+     x <- rnorm(100); y <- rnorm(100)
+     plot (x,y, type='o')
+
+
+ 10. Use JSON Web Service
+
+     From the given blog post : http://laclefyoshi.blogspot.com/2011/02/processing-json-with-r-rjson.html
+
+      In  r-node type (Look at item 4 for lanching RServe with the proxy) : 
+
+          library("rjson")
+          # use rjson
+          
+          map_data <- fromJSON(paste(readLines("http://maps.google.com/maps/api/elevation/json?path=43.0,141.4|26.2,127.7&samples=500&sensor=false"), collapse=""))
+          # get a data from Google Elevation API
+          # convert JSON data into R object using fromJSON()
+          # toJSON(): convert R object into JSON data
+          
+          elevation_data <- lapply(map_data$result, function(x){x$elevation})
+          
+          lng_data <- lapply(map_data$result, function(x){x$location$lng})
+          
+          plot(lng_data, elevation_data, type="l")
+
+
+
+ 11. If using R 2.10 or greater, and if you want help, you need to start up a R help
      server. I have not been able to figure out how to do this automatically yet, so
      in the meanwhile you must start a separate R instance and run the
      R help server. To do this, run the R commands:
@@ -77,11 +143,13 @@ DEBUG: Setup command response: {"data":{"pager":["/usr/lib/R/bin/pager"]},"attri
      You can choose any port you like, but 22900 is the default port in the RServe
      configuration.
 
-  9. Try following the sample session listed in Appendix A of:
+
+ 12. Try following the sample session listed in Appendix A of:
 
       cran.r-project.org/doc/manuals/R-intro.pdf
 
- 10. Copy the file server/etc/config-example.js to server/etc/config.js,
+
+ 13. Copy the file server/etc/config-example.js to server/etc/config.js,
      edit and alter the configuration settings to be more appropriate for
      your environment.
 
