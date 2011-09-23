@@ -137,6 +137,42 @@ DEBUG: Setup command response: {"data":{"pager":["/usr/lib/R/bin/pager"]},"attri
           plot(lng_data, elevation_data, type="l")
 
 
+     Some R tips:
+     ------------
+
+     Assign a value to a variable: 
+
+         a <- 42
+
+
+     Assign an array to a variable:
+
+         b <- c(1, 2, 3)
+
+
+     Plot the array: 
+
+         plot(b)
+
+
+     Use JSON: 
+
+         library('rjson')
+          # Look at the json structure
+         json <- fromJSON('{ "key": "value", "obj": { "name": "Romain", "age": 25 }, "results": [{"data": "one"}, {"data": "two"}] }')
+         
+         # And how I use it
+         > json$key
+         [1] "value"
+         > json$obj$name
+          [1] "Romain"
+         > json$obj$age
+         [1] 25
+         > json$results[[1]]$data
+         [1] "one"
+         
+         
+
 
  11. If using R 2.10 or greater, and if you want help, you need to start up a R help
      server. I have not been able to figure out how to do this automatically yet, so
